@@ -5,29 +5,22 @@ var MonthlyRulePicker = require('./MonthlyRulePicker.js');
 var YearlyRulePicker = require('./YearlyRulePicker.js');
 
 var FrequencyPicker = React.createClass({
-  getInitialState: function() {
-    return ({frequency: 'daily'});
-  },
-  handleFrequencyChange: function(e) {
-    var frequency = e.target.value;
-    this.setState({frequency: frequency});
-  },
   render: function() {
     return (
-      <div className="frequency-picker" onChange={this.handleFrequencyChange} >
-        Frequency:
-        <select name="frequency">
-          <option value="daily">Daily</option>
-          <option value="weekly">Weekly</option>
-          <option value="monthly">Monthly</option>
-          <option value="yearly">Yearly</option>
+      <div>
+        Recurrence Rule:
+        <select onChange={this.props.onRuleChange} >
+          <option value="IceCube::DailyRule">Daily</option>
+          <option value="IceCube::WeeklyRule">Weekly</option>
+          <option value="IceCube::MonthlyRule">Monthly</option>
+          <option value="IceCube::YearlyRule">Yearly</option>
         </select>
         {(() => {
-          switch (this.state.frequency) {
-            case "daily":   return <DailyRulePicker />;
-            case "weekly":  return (<WeeklyRulePicker />);
-            case "monthly": return (<MonthlyRulePicker />);
-            case "yearly":  return (<YearlyRulePicker />);
+          switch (this.props.rule) {
+            case "IceCube::DailyRule":   return <DailyRulePicker interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
+            case "IceCube::WeeklyRule":  return <WeeklyRulePicker interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
+            case "IceCube::MonthlyRule": return <MonthlyRulePicker interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
+            case "IceCube::YearlyRule":  return <YearlyRulePicker interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
           }
         })()}
       </div>

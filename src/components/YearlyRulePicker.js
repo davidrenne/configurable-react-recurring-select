@@ -3,7 +3,7 @@ var React = require('react');
 var YearlyRulePicker = React.createClass({
   render: function() {
     return (
-      <div>Yearly Rule Picker</div>
+      <div>Every <input value={this.props.interval} onChange={this.props.onIntervalChange}></input> year(s)</div>
     );
   }
 });
