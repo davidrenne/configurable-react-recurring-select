@@ -1,5 +1,5 @@
 var React = require('react');
-var FrequencyPicker = require('./FrequencyPicker.js');
+var FrequencyPicker = require('./RulePicker.js');
 
 var RecurringSelect = React.createClass({
   getInitialState: function() {
