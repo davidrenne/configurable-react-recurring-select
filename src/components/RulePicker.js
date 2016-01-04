@@ -4,7 +4,7 @@ var WeeklyRulePicker = require('./WeeklyRulePicker.js');
 var MonthlyRulePicker = require('./MonthlyRulePicker.js');
 var YearlyRulePicker = require('./YearlyRulePicker.js');
 
-var FrequencyPicker = React.createClass({
+var RulePicker = React.createClass({
   render: function() {
     return (
       <div>
@@ -18,8 +18,8 @@ var FrequencyPicker = React.createClass({
         {(() => {
           switch (this.props.rule) {
             case "IceCube::DailyRule":   return <DailyRulePicker interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
-            case "IceCube::WeeklyRule":  return <WeeklyRulePicker interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
-            case "IceCube::MonthlyRule": return <MonthlyRulePicker interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
+            case "IceCube::WeeklyRule":  return <WeeklyRulePicker interval={this.props.interval} validations={this.props.validations} onIntervalChange={this.props.onIntervalChange} onValidationsChange={this.props.onValidationsChange} />;
+            case "IceCube::MonthlyRule": return <MonthlyRulePicker interval={this.props.interval} validations={this.props.validations} onIntervalChange={this.props.onIntervalChange} onValidationsChange={this.props.onValidationsChange} />;
             case "IceCube::YearlyRule":  return <YearlyRulePicker interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
           }
         })()}
@@ -28,4 +28,4 @@ var FrequencyPicker = React.createClass({
   }
 });
 
-module.exports = FrequencyPicker;
+module.exports = RulePicker;

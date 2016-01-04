@@ -6,7 +6,7 @@ var MonthlyRulePicker = React.createClass({
     return (
       <div>
         Every <input value={this.props.interval} onChange={this.props.onIntervalChange}></input> month(s) on:
-        <DayOfWeekOfMonthPicker />
+        <DayOfWeekOfMonthPicker validations={this.props.validations} onValidationsChange={this.props.onValidationsChange} />
       </div>
     );
   }
