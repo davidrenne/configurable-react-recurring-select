@@ -10,17 +10,18 @@ var RulePicker = React.createClass({
       <div>
         Recurrence Rule:
         <select onChange={this.props.onRuleChange} >
-          <option value="IceCube::DailyRule">Daily</option>
-          <option value="IceCube::WeeklyRule">Weekly</option>
-          <option value="IceCube::MonthlyRule">Monthly</option>
-          <option value="IceCube::YearlyRule">Yearly</option>
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+          <option value="monthly (by day of week)">Monthly (by day of week)</option>
+          <option value="monthly (by day of month)">Monthly (by day of month)</option>
+          <option value="yearly">Yearly</option>
         </select>
         {(() => {
           switch (this.props.rule) {
-            case "IceCube::DailyRule":   return <DailyRulePicker interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
-            case "IceCube::WeeklyRule":  return <WeeklyRulePicker interval={this.props.interval} validations={this.props.validations} onIntervalChange={this.props.onIntervalChange} onValidationsChange={this.props.onValidationsChange} />;
-            case "IceCube::MonthlyRule": return <MonthlyRulePicker interval={this.props.interval} validations={this.props.validations} onIntervalChange={this.props.onIntervalChange} onValidationsChange={this.props.onValidationsChange} />;
-            case "IceCube::YearlyRule":  return <YearlyRulePicker interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
+            case "daily":   return <DailyRulePicker interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
+            case "weekly":  return <WeeklyRulePicker interval={this.props.interval} validations={this.props.validations} onIntervalChange={this.props.onIntervalChange} onValidationsChange={this.props.onValidationsChange} />;
+            case "monthly": return <MonthlyRulePicker interval={this.props.interval} validations={this.props.validations} onIntervalChange={this.props.onIntervalChange} onValidationsChange={this.props.onValidationsChange} />;
+            case "yearly":  return <YearlyRulePicker interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
           }
         })()}
       </div>
