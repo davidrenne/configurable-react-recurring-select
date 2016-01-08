@@ -2,6 +2,7 @@ var React = require('react');
 var RulePicker = require('./RulePicker.js');
 var TimePicker = require('react-time-picker');
 var DatePicker = require('react-date-picker');
+var RuleSummary = require("./RuleSummary.js");
 var moment = require('moment');
 
 var RecurringSelect = React.createClass({
@@ -76,6 +77,7 @@ var RecurringSelect = React.createClass({
         <div>
           Until: <DatePicker minDate={this.state.until} date={this.state.until} onChange={this.handleEndDateChange} />
         </div>
+        <RuleSummary fields={this.state} />
         <button className="btn" onClick={this.handleSave}>Save</button>
       </div>
     );
