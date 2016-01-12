@@ -1,0 +1,19 @@
+.btn {
+  font-family: Arial;
+  color: #666;
+  font-size: 15px;
+  background: #ffffff;
+  padding: 8px 8px 8px 8px;
+  border: solid #dfe0e4 1px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn:hover {
+  background: #1385e5;
+  text-decoration: none;
+}
+
+.btn.active {
+  color: #1385e5;
+}

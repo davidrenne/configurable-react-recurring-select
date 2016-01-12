@@ -16,8 +16,8 @@ var WeeklyRulePicker = React.createClass({
   render: function() {
     var days = this.props.validations;
     return (
-      <div>
-        Every <input className="recurring-select" type="text" value={this.props.interval} onChange={this.props.onIntervalChange}></input> week(s) on:
+      <div className="rule">
+        Every <input className="interval" type="text" value={this.props.interval} onChange={this.props.onIntervalChange}></input> week(s) on:
         <DayOfWeekPicker onDayChange={this.handleDayChange} active={days} />
       </div>
     );

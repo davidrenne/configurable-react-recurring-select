@@ -11,8 +11,8 @@ var MonthlyRulePicker = React.createClass({
       pickerComponent = <DayOfWeekOfMonthPicker validations={this.props.validations} onValidationsChange={this.props.onValidationsChange} />;
     }
     return (
-      <div>
-        Every <input className="recurring-select" type="text" value={this.props.interval} onChange={this.props.onIntervalChange}></input> month(s) on:
+      <div className="rule">
+        Every <input className="interval" type="text" value={this.props.interval} onChange={this.props.onIntervalChange}></input> month(s) on:
         {pickerComponent}
       </div>
     );

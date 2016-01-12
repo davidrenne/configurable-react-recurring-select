@@ -79,6 +79,7 @@ var RuleSummary = React.createClass({
                   sentence.push("on");
                   sentence.push(this.toSentence(days));
                   sentence.push("day");
+                  sentence.push("of the month");
                 }
               } else {
                 var days = [];
@@ -105,6 +106,7 @@ var RuleSummary = React.createClass({
                 if (days.length > 0) {
                   sentence.push("on the");
                   sentence.push(this.toSentence(days));
+                  sentence.push("of the month");
                 }
               }
               break;
