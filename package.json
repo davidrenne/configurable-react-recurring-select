@@ -1,6 +1,6 @@
 {
   "name": "react-recurring-select",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "./dist/RecurringSelect.js",
   "description": "React component which makes creating ice_cube recurrence schedules easy",
   "scripts": {
