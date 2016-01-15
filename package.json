@@ -5,7 +5,8 @@
   "description": "React component which makes creating ice_cube recurrence schedules easy",
   "scripts": {
     "start": "node server.js",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "transform": "jsx src/components dist"
   },
   "repository": {
     "type": "git",
