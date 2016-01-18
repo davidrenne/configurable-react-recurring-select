@@ -122,7 +122,7 @@ var RuleSummary = React.createClass({displayName: "RuleSummary",
   },
   render: function() {
     return (
-      React.createElement("div", null, this.summary(this.props.fields))
+      React.createElement("div", {className: "summary"}, this.summary(this.props.fields))
     );
   }
 });

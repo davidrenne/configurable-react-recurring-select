@@ -4,7 +4,7 @@ var cn = require('classnames');
 var DayOfWeekPicker = React.createClass({displayName: "DayOfWeekPicker",
   label: function() {
     if (this.props.label) {
-      return React.createElement('div', {className:"col-xs"}, React.createElement('div', null, this.props.label));
+      return React.createElement('div', {className:"col-xs"}, React.createElement('div', {className:"label"}, this.props.label));
     }
   },
   render: function() {

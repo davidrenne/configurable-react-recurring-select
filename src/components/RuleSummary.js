@@ -122,7 +122,7 @@ var RuleSummary = React.createClass({
   },
   render: function() {
     return (
-      <div>{this.summary(this.props.fields)}</div>
+      <div className="summary">{this.summary(this.props.fields)}</div>
     );
   }
 });
