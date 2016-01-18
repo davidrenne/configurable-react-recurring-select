@@ -7,6 +7,12 @@
   border: solid #dfe0e4 1px;
   text-decoration: none;
   text-align: center;
+
+  &.save {
+    width: 25%;
+    display: table;
+    margin: 0px auto;
+  }
 }
 
 .btn:hover {

@@ -122,7 +122,7 @@ var RecurringSelect = React.createClass({
         </Tabs>
         <hr></hr>
         <RuleSummary fields={this.state} />
-        <button className="btn" onClick={this.handleSave}>Save</button>
+        <button className="btn save" onClick={this.handleSave}>Save</button>
       </div>
     );
   }

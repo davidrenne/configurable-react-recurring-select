@@ -122,7 +122,7 @@ var RecurringSelect = React.createClass({displayName: "RecurringSelect",
         ), 
         React.createElement("hr", null), 
         React.createElement(RuleSummary, {fields: this.state}), 
-        React.createElement("button", {className: "btn", onClick: this.handleSave}, "Save")
+        React.createElement("button", {className: "btn save", onClick: this.handleSave}, "Save")
       )
     );
   }
