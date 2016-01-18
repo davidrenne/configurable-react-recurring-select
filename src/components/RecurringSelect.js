@@ -98,7 +98,7 @@ var RecurringSelect = React.createClass({
     iceCubeHash["interval"] = interval;
     iceCubeHash["validations"] = newValidations;
     iceCubeHash["until"] = until;
-    console.log(JSON.stringify(iceCubeHash));
+    this.props.onSave(JSON.stringify(iceCubeHash));
   },
   render: function() {
     return (
