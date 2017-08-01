@@ -11,12 +11,19 @@ var RuleSummary = React.createClass({
     var last = array.pop();
     return array.join(", ") + " and " + last;
   },
+
+  sortDays: function(a,b) {
+    return a - b;
+  },
+
   summary: function(fields) {
     if (fields.interval == 0) {
       return "Not recurring."
     }
     if (fields.validations == null || fields.validations == undefined) {
       fields.validations = [];
+    } else {
+      fields.validations.sort(this.sortDays);
     }
     var sentence = [];
     var weekDays = {0: "Sun", 1: "Mon", 2: "Tue", 3: "Wed", 4: "Thur", 5: "Fri", 6: "Sat"};;
