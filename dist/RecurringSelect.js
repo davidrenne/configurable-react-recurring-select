@@ -268,7 +268,7 @@ var RecurringSelect = React.createClass({
 	        )
 	      ),
 	      React.createElement('hr', null),
-	      this.props.showSummary ? React.createElement(RuleSummary, { showLanguageNotSupportedMessage: this.props.showLanguageNotSupportedMessage, fields: this.state, translations: this.props.translations.RuleSummary, language: this.props.language }) : null,
+	      this.props.showSummary ? React.createElement(RuleSummary, { showLanguageNotSupportedMessage: this.props.showLanguageNotSupportedMessage, fields: this.state, showInterval: this.props.showInterval, translations: this.props.translations.RuleSummary, language: this.props.language }) : null,
 	      React.createElement(
 	        'span',
 	        { onClick: this.handleSave },
@@ -277,7 +277,6 @@ var RecurringSelect = React.createClass({
 	    );
 	  }
 	});
-
 
 	RecurringSelect.propTypes = {
 	  visibleOptions: React.PropTypes.object,
@@ -289,7 +288,32 @@ var RecurringSelect = React.createClass({
 	  showInterval: React.PropTypes.bool,
 	  showLanguageNotSupportedMessage: React.PropTypes.bool,
 	  convertToIceCube: React.PropTypes.bool,
-	  language: React.PropTypes.string
+	  language: React.PropTypes.string,
+	  //Initial state
+	  rule: React.PropTypes.string,
+	  interval: React.PropTypes.number,
+	  validations: React.PropTypes.array,
+	  until: React.PropTypes.any,
+	  startTime: React.PropTypes.string
+	};
+
+	RecurringSelect.defaultProps = {
+	  visibleOptions: {
+	    daily: true,
+	    weekly: true,
+	    monthly_day_of_week: true,
+	    monthly_day_of_month: true,
+	    yearly: true
+	  },
+	  translations: translations,
+	  language: "en",
+	  showSummary: true,
+	  showLanguageNotSupportedMessage: false,
+	  useSeconds: true,
+	  allowForever: true,
+	  showInterval: true,
+	  showTimeOnSameTab: true,
+	  convertToIceCube: false
 	};
 
 module.exports = RecurringSelect;

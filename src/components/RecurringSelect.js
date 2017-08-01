@@ -236,7 +236,7 @@ var RecurringSelect = React.createClass({
           </Tabs.Panel>
         </Tabs>
         <hr/>
-        {this.props.showSummary ? <RuleSummary showLanguageNotSupportedMessage={this.props.showLanguageNotSupportedMessage} fields={this.state} translations={this.props.translations.RuleSummary} language={this.props.language} /> : null}
+        {this.props.showSummary ? <RuleSummary showLanguageNotSupportedMessage={this.props.showLanguageNotSupportedMessage} fields={this.state} showInterval={this.props.showInterval} translations={this.props.translations.RuleSummary} language={this.props.language} /> : null}
         <span onClick={this.handleSave}>{this.props.button}</span>
       </div>
     );

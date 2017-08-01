@@ -89,7 +89,7 @@ var App = React.createClass({
       //     console.log(data);
       //   }}/>
     return (
-      <RecurringSelect button={<button className="btn save">{translations.Buttons.Save}</button>}translations={translations}   onSave={function(data){
+      <RecurringSelect button={<button className="btn save">{translations.Buttons.Save}</button>} translations={translations}   onSave={function(data){
           console.log(data);
         }}/>
     );

@@ -16,7 +16,7 @@ var RuleSummary = React.createClass({
       return "Not recurring."
     }
     var sentence = [];
-    var weekDays = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday"};
+    var weekDays = {0: "Sun", 1: "Mon", 2: "Tue", 3: "Wed", 4: "Thur", 5: "Fri", 6: "Sat"};;
     var englishDay = {
       1: "the 1st",
       2: "the 2nd",
@@ -51,17 +51,27 @@ var RuleSummary = React.createClass({
       31: "the 31st",
       "-1": "the last",
     };
-    sentence.push("Every");
-    sentence.push(fields.interval.toString());
+
+    if (this.props.showInterval) {
+      sentence.push("Every");
+      sentence.push(fields.interval.toString());
+    }
     switch (fields.rule) {
       case "daily":
-              sentence.push("day(s)");
-              break;
+              if (this.props.showInterval) {
+                sentence.push("day(s)");
+              } else {
+                sentence.push("Everyday");
+              }
       case "weekly":
               sentence.push("week(s)");
               var days = [];
               if (fields.validations.length > 0) {
-                sentence.push("on");
+                if (this.props.showInterval) {
+                  sentence.push("on");
+                } else {
+                  sentence.push("On");
+                }
                 for (var i = 0; i < fields.validations.length; i++) {
                   days.push(weekDays[fields.validations[i]]);
                 }
@@ -69,14 +79,20 @@ var RuleSummary = React.createClass({
               }
               break;
       case "monthly":
-              sentence.push("month(s)");
+              if (this.props.showInterval) {
+                sentence.push("month(s)");
+              }
               if (fields.validations.constructor == Array) {
                 var days = [];
                 for (var i = 0; i < fields.validations.length; i++) {
                   days.push(englishDay[fields.validations[i]]);
                 }
                 if (days.length > 0) {
-                  sentence.push("on");
+                  if (this.props.showInterval) {
+                    sentence.push("on");
+                  } else {
+                    sentence.push("On");
+                  }
                   sentence.push(this.toSentence(days));
                   sentence.push("day");
                   sentence.push("of the month");
@@ -111,7 +127,11 @@ var RuleSummary = React.createClass({
               }
               break;
       case "yearly":
-              sentence.push("year(s)");
+              if (this.props.showInterval) {
+                sentence.push("year(s)");
+              } else {
+                sentence.push("Every year");
+              }
               break;
     }
     sentence.push("at");
