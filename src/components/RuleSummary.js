@@ -116,13 +116,19 @@ var RuleSummary = React.createClass({
     }
     sentence.push("at");
     sentence.push(fields.startTime);
-    sentence.push("until");
-    sentence.push(fields.until);
+    if (fields.until != "0000-00-00") {
+      sentence.push("until");
+      sentence.push(fields.until);
+    }
     return sentence.join(' ');
   },
   render: function() {
+    var message = "";
+    if (this.props.showLanguageNotSupportedMessage) {
+      message = this.props.translations.LanguageNotSupported
+    }
     return (
-      <div className="summary">{this.summary(this.props.fields)}</div>
+      <div className="summary">{this.props.language == "en" ? this.summary(this.props.fields): message}</div>
     );
   }
 });

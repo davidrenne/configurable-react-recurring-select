@@ -15,10 +15,19 @@ var WeeklyRulePicker = React.createClass({
   },
   render: function() {
     var days = this.props.validations;
+
+    var intervalInput = null;
+    if (this.props.showInterval) {
+      intervalInput = <input className="interval" type="text" value={this.props.interval} onChange={this.props.onIntervalChange}></input>
+    } else {
+      intervalInput = <span>{this.props.interval}</span>
+    }
+    var interval = <span>{this.props.translations.Every} {intervalInput} {this.props.translations.WeeksOn}:</span>
+
     return (
       <div className="rule">
-        Every <input className="interval" type="text" value={this.props.interval} onChange={this.props.onIntervalChange}></input> week(s) on:
-        <DayOfWeekPicker onDayChange={this.handleDayChange} active={days} />
+        {interval}
+        <DayOfWeekPicker translations={this.props.translations} onDayChange={this.handleDayChange} active={days} />
       </div>
     );
   }

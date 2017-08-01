@@ -20,16 +20,16 @@ var DayOfWeekOfMonthPicker = React.createClass({
     return (
       <div>
         <div>
-          <DayOfWeekPicker label="Week 1: " onDayChange={this.handleDayOfWeekChange.bind(null, 1)} active={weeks[1]} />
+          <DayOfWeekPicker translations={this.props.translations} label={this.props.translations.Week1} onDayChange={this.handleDayOfWeekChange.bind(null, 1)} active={weeks[1]} />
         </div>
         <div>
-          <DayOfWeekPicker label="Week 2: " onDayChange={this.handleDayOfWeekChange.bind(null, 2)} active={weeks[2]} />
+          <DayOfWeekPicker translations={this.props.translations} label={this.props.translations.Week2} onDayChange={this.handleDayOfWeekChange.bind(null, 2)} active={weeks[2]} />
         </div>
         <div>
-          <DayOfWeekPicker label="Week 3: " onDayChange={this.handleDayOfWeekChange.bind(null, 3)} active={weeks[3]} />
+          <DayOfWeekPicker translations={this.props.translations} label={this.props.translations.Week3} onDayChange={this.handleDayOfWeekChange.bind(null, 3)} active={weeks[3]} />
         </div>
         <div>
-          <DayOfWeekPicker label="Week 4: " onDayChange={this.handleDayOfWeekChange.bind(null, 4)} active={weeks[4]} />
+          <DayOfWeekPicker translations={this.props.translations} label={this.props.translations.Week4} onDayChange={this.handleDayOfWeekChange.bind(null, 4)} active={weeks[4]} />
         </div>
       </div>
     );

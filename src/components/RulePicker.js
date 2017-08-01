@@ -7,27 +7,32 @@ var YearlyRulePicker = require('./YearlyRulePicker.js');
 var RulePicker = React.createClass({
   getRule: function() {
     switch (this.props.rule) {
-      case "daily":   return <DailyRulePicker interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
-      case "weekly":  return <WeeklyRulePicker interval={this.props.interval} validations={this.props.validations} onIntervalChange={this.props.onIntervalChange} onValidationsChange={this.props.onValidationsChange} />;
-      case "monthly": return <MonthlyRulePicker interval={this.props.interval} validations={this.props.validations} onIntervalChange={this.props.onIntervalChange} onValidationsChange={this.props.onValidationsChange} />;
-      case "yearly":  return <YearlyRulePicker interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
+      case "daily":   return <DailyRulePicker translations={this.props.translations.Intervals} showInterval={this.props.showInterval} interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
+      case "weekly":  return <WeeklyRulePicker translations={this.props.translations.Intervals} showInterval={this.props.showInterval} interval={this.props.interval} validations={this.props.validations} onIntervalChange={this.props.onIntervalChange} onValidationsChange={this.props.onValidationsChange} />;
+      case "monthly": return <MonthlyRulePicker translations={this.props.translations.Intervals} showInterval={this.props.showInterval} interval={this.props.interval} validations={this.props.validations} onIntervalChange={this.props.onIntervalChange} onValidationsChange={this.props.onValidationsChange} />;
+      case "yearly":  return <YearlyRulePicker translations={this.props.translations.Intervals} showInterval={this.props.showInterval} interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
     }
   },
   render: function() {
     return (
       <div>
-        Recurrence Rule:
-        <select onChange={this.props.onRuleChange} >
-          <option value="daily">Daily</option>
-          <option value="weekly">Weekly</option>
-          <option value="monthly (by day of week)">Monthly (by day of week)</option>
-          <option value="monthly (by day of month)">Monthly (by day of month)</option>
-          <option value="yearly">Yearly</option>
+        {this.props.translations.RulePicker.RecurrenceRule}:
+        <select onChange={this.props.onRuleChange}>
+          {this.props.visibleOptions.daily ? <option value="daily">{this.props.translations.RulePicker.OptionDaily}</option>: null}
+          {this.props.visibleOptions.weekly ? <option value="weekly">{this.props.translations.RulePicker.OptionWeekly}</option>: null}
+          {this.props.visibleOptions.monthly_day_of_week ? <option value="monthly_day_of_week">{this.props.translations.RulePicker.OptionMonthlyByDayOfWeek}</option>: null}
+          {this.props.visibleOptions.monthly_day_of_month ? <option value="monthly_day_of_month">{this.props.translations.RulePicker.OptionMonthlyByDayOfMonth}</option>: null}
+          {this.props.visibleOptions.yearly ? <option value="yearly">{this.props.translations.RulePicker.OptionYearly}</option>: null}
         </select>
         {this.getRule()}
       </div>
     );
   }
 });
+
+RulePicker.propTypes = {
+  translations: React.PropTypes.object.isRequired
+};
+
 
 module.exports = RulePicker;
