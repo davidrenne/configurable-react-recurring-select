@@ -20,7 +20,7 @@ var DayOfWeekPicker = React.createClass({
 	        { className: 'col-xs' },
 	        React.createElement(
 	          'div',
-	          { id: '0', className: cn("btn", { active: activeDays.indexOf(0) > -1 }), onClick: this.props.onDayChange },
+	          { id: '0', className: cn("btn item", { active: activeDays.indexOf(0) > -1 }), onClick: this.props.onDayChange },
 	          this.props.translations.Sun
 	        )
 	      ),
@@ -29,7 +29,7 @@ var DayOfWeekPicker = React.createClass({
 	        { className: 'col-xs' },
 	        React.createElement(
 	          'div',
-	          { id: '1', className: cn("btn", { active: activeDays.indexOf(1) > -1 }), onClick: this.props.onDayChange },
+	          { id: '1', className: cn("btn item", { active: activeDays.indexOf(1) > -1 }), onClick: this.props.onDayChange },
 	          this.props.translations.Mon
 	        )
 	      ),
@@ -38,7 +38,7 @@ var DayOfWeekPicker = React.createClass({
 	        { className: 'col-xs' },
 	        React.createElement(
 	          'div',
-	          { id: '2', className: cn("btn", { active: activeDays.indexOf(2) > -1 }), onClick: this.props.onDayChange },
+	          { id: '2', className: cn("btn item", { active: activeDays.indexOf(2) > -1 }), onClick: this.props.onDayChange },
 	          this.props.translations.Tue
 	        )
 	      ),
@@ -47,7 +47,7 @@ var DayOfWeekPicker = React.createClass({
 	        { className: 'col-xs' },
 	        React.createElement(
 	          'div',
-	          { id: '3', className: cn("btn", { active: activeDays.indexOf(3) > -1 }), onClick: this.props.onDayChange },
+	          { id: '3', className: cn("btn item", { active: activeDays.indexOf(3) > -1 }), onClick: this.props.onDayChange },
 	          this.props.translations.Wed
 	        )
 	      ),
@@ -56,7 +56,7 @@ var DayOfWeekPicker = React.createClass({
 	        { className: 'col-xs' },
 	        React.createElement(
 	          'div',
-	          { id: '4', className: cn("btn", { active: activeDays.indexOf(4) > -1 }), onClick: this.props.onDayChange },
+	          { id: '4', className: cn("btn item", { active: activeDays.indexOf(4) > -1 }), onClick: this.props.onDayChange },
 	          this.props.translations.Thu
 	        )
 	      ),
@@ -65,7 +65,7 @@ var DayOfWeekPicker = React.createClass({
 	        { className: 'col-xs' },
 	        React.createElement(
 	          'div',
-	          { id: '5', className: cn("btn", { active: activeDays.indexOf(5) > -1 }), onClick: this.props.onDayChange },
+	          { id: '5', className: cn("btn item", { active: activeDays.indexOf(5) > -1 }), onClick: this.props.onDayChange },
 	          this.props.translations.Fri
 	        )
 	      ),
@@ -74,7 +74,7 @@ var DayOfWeekPicker = React.createClass({
 	        { className: 'col-xs' },
 	        React.createElement(
 	          'div',
-	          { id: '6', className: cn("btn", { active: activeDays.indexOf(6) > -1 }), onClick: this.props.onDayChange },
+	          { id: '6', className: cn("btn item", { active: activeDays.indexOf(6) > -1 }), onClick: this.props.onDayChange },
 	          this.props.translations.Sat
 	        )
 	      )
