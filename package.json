@@ -1,6 +1,6 @@
 {
   "name": "configurable-react-recurring-select",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "main": "./dist/RecurringSelect.js",
   "description": "React component which makes creating ice_cube recurrence schedules easy.  This fork of the original allows more control over every element and every i18n translation",
   "scripts": {

@@ -17,6 +17,9 @@ var RuleSummary = React.createClass({
 	    if (fields.interval == 0) {
 	      return "Not recurring.";
 	    }
+	    if (fields.validations == null || fields.validations == undefined) {
+	      fields.validations = [];
+	    }
 	    var sentence = [];
 	    var weekDays = { 0: "Sun", 1: "Mon", 2: "Tue", 3: "Wed", 4: "Thur", 5: "Fri", 6: "Sat" };;
 	    var englishDay = {
@@ -66,7 +69,9 @@ var RuleSummary = React.createClass({
 	          sentence.push("Everyday");
 	        }
 	      case "weekly":
-	        sentence.push("week(s)");
+	        if (this.props.showInterval) {
+	          sentence.push("week(s)");
+	        }
 	        var days = [];
 	        if (fields.validations.length > 0) {
 	          if (this.props.showInterval) {
