@@ -17,7 +17,7 @@ var RulePicker = React.createClass({
     return (
       <div>
         {this.props.translations.RulePicker.RecurrenceRule}:
-        <select onChange={this.props.onRuleChange}>
+        <select value={this.props.rule} onChange={this.props.onRuleChange}>
           {this.props.visibleOptions.daily ? <option value="daily">{this.props.translations.RulePicker.OptionDaily}</option>: null}
           {this.props.visibleOptions.weekly ? <option value="weekly">{this.props.translations.RulePicker.OptionWeekly}</option>: null}
           {this.props.visibleOptions.monthly_day_of_week ? <option value="monthly_day_of_week">{this.props.translations.RulePicker.OptionMonthlyByDayOfWeek}</option>: null}

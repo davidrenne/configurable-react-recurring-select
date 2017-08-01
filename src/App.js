@@ -77,7 +77,9 @@ translations["Intervals"]["Sat"] = "Sat";
 var App = React.createClass({
   render: function() {
 
-      // <RecurringSelect button={<button className="btn save">{translations.Buttons.Save}</button>} visibleOptions={{
+      // <RecurringSelect
+      // rule="weekly" startTime="11:40:21 AM" validations={[2,5,6]} interval={2}
+      // button={<button className="btn save">{translations.Buttons.Save}</button>} visibleOptions={{
       //     daily: true,
       //     weekly: true,
       //     monthly_day_of_week: false,
@@ -86,7 +88,6 @@ var App = React.createClass({
       //   }} showLanguageNotSupportedMessage={false} translations={translations} language="en" onSave={function(data){
       //     console.log(data);
       //   }}/>
-
     return (
       <RecurringSelect button={<button className="btn save">{translations.Buttons.Save}</button>}translations={translations}   onSave={function(data){
           console.log(data);

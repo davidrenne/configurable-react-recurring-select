@@ -27,7 +27,7 @@ var RulePicker = React.createClass({
 	      ':',
 	      React.createElement(
 	        'select',
-	        { onChange: this.props.onRuleChange },
+	        { value: this.props.rule, onChange: this.props.onRuleChange },
 	        this.props.visibleOptions.daily ? React.createElement(
 	          'option',
 	          { value: 'daily' },

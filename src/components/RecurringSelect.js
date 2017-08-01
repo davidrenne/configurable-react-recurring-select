@@ -88,13 +88,14 @@ var RecurringSelect = React.createClass({
     } else {
       until = moment().format('YYYY-MM-DD');
     }
+
     return ({
       showCalendar: false,
-      rule: "daily",
-      interval: 1,
-      validations: null,
-      until: until,
-      startTime: "10:00 AM"
+      rule: this.props.rule == undefined ? "daily": this.props.rule,
+      interval: this.props.interval == undefined ? 1: this.props.interval,
+      validations: this.props.validations == undefined ? null: this.props.validations,
+      until: this.props.until == undefined ? until: this.props.until,
+      startTime: this.props.startTime == undefined ? "10:00 AM": this.props.startTime
     });
   },
   handleToggleForeverChange: function(e) {
@@ -252,7 +253,13 @@ RecurringSelect.propTypes = {
   showInterval: React.PropTypes.bool,
   showLanguageNotSupportedMessage: React.PropTypes.bool,
   convertToIceCube: React.PropTypes.bool,
-  language: React.PropTypes.string
+  language: React.PropTypes.string,
+  //Initial state
+  rule: React.PropTypes.string,
+  interval: React.PropTypes.number,
+  validations: React.PropTypes.array,
+  until: React.PropTypes.any,
+  startTime: React.PropTypes.string
 };
 
 RecurringSelect.defaultProps = {

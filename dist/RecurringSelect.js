@@ -82,26 +82,6 @@ translations["Intervals"]["Sat"] = "Sat";
 var RecurringSelect = React.createClass({
 	  displayName: 'RecurringSelect',
 
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      visibleOptions: {
-	        daily: true,
-	        weekly: true,
-	        monthly_day_of_week: true,
-	        monthly_day_of_month: true,
-	        yearly: true
-	      },
-	      translations: translations,
-	      language: "en",
-	      showSummary: true,
-	      showLanguageNotSupportedMessage: false,
-	      useSeconds: true,
-	      allowForever: true,
-	      showInterval: true,
-	      showTimeOnSameTab: true,
-	      convertToIceCube: false
-	    };
-	  },
 	  getInitialState: function getInitialState() {
 	    var until = "";
 	    if (this.props.allowForever) {
@@ -109,13 +89,14 @@ var RecurringSelect = React.createClass({
 	    } else {
 	      until = moment().format('YYYY-MM-DD');
 	    }
+
 	    return {
 	      showCalendar: false,
-	      rule: "daily",
-	      interval: 1,
-	      validations: null,
-	      until: until,
-	      startTime: "10:00 AM"
+	      rule: this.props.rule == undefined ? "daily" : this.props.rule,
+	      interval: this.props.interval == undefined ? 1 : this.props.interval,
+	      validations: this.props.validations == undefined ? null : this.props.validations,
+	      until: this.props.until == undefined ? until : this.props.until,
+	      startTime: this.props.startTime == undefined ? "10:00 AM" : this.props.startTime
 	    };
 	  },
 	  handleToggleForeverChange: function handleToggleForeverChange(e) {
