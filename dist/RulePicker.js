@@ -4,30 +4,63 @@ var WeeklyRulePicker = require('./WeeklyRulePicker.js');
 var MonthlyRulePicker = require('./MonthlyRulePicker.js');
 var YearlyRulePicker = require('./YearlyRulePicker.js');
 
-var RulePicker = React.createClass({displayName: "RulePicker",
-  getRule: function() {
-    switch (this.props.rule) {
-      case "daily":   return React.createElement(DailyRulePicker, {interval: this.props.interval, onIntervalChange: this.props.onIntervalChange});
-      case "weekly":  return React.createElement(WeeklyRulePicker, {interval: this.props.interval, validations: this.props.validations, onIntervalChange: this.props.onIntervalChange, onValidationsChange: this.props.onValidationsChange});
-      case "monthly": return React.createElement(MonthlyRulePicker, {interval: this.props.interval, validations: this.props.validations, onIntervalChange: this.props.onIntervalChange, onValidationsChange: this.props.onValidationsChange});
-      case "yearly":  return React.createElement(YearlyRulePicker, {interval: this.props.interval, onIntervalChange: this.props.onIntervalChange});
-    }
-  },
-  render: function() {
-    return (
-      React.createElement("div", null, 
-        "Recurrence Rule:", 
-        React.createElement("select", {onChange: this.props.onRuleChange}, 
-          React.createElement("option", {value: "daily"}, "Daily"), 
-          React.createElement("option", {value: "weekly"}, "Weekly"), 
-          React.createElement("option", {value: "monthly (by day of week)"}, "Monthly (by day of week)"), 
-          React.createElement("option", {value: "monthly (by day of month)"}, "Monthly (by day of month)"), 
-          React.createElement("option", {value: "yearly"}, "Yearly")
-        ), 
-        this.getRule()
-      )
-    );
-  }
-});
+var RulePicker = React.createClass({
+	  displayName: 'RulePicker',
+
+	  getRule: function getRule() {
+	    switch (this.props.rule) {
+	      case "daily":
+	        return React.createElement(DailyRulePicker, { translations: this.props.translations.Intervals, showInterval: this.props.showInterval, interval: this.props.interval, onIntervalChange: this.props.onIntervalChange });
+	      case "weekly":
+	        return React.createElement(WeeklyRulePicker, { translations: this.props.translations.Intervals, showInterval: this.props.showInterval, interval: this.props.interval, validations: this.props.validations, onIntervalChange: this.props.onIntervalChange, onValidationsChange: this.props.onValidationsChange });
+	      case "monthly":
+	        return React.createElement(MonthlyRulePicker, { translations: this.props.translations.Intervals, showInterval: this.props.showInterval, interval: this.props.interval, validations: this.props.validations, onIntervalChange: this.props.onIntervalChange, onValidationsChange: this.props.onValidationsChange });
+	      case "yearly":
+	        return React.createElement(YearlyRulePicker, { translations: this.props.translations.Intervals, showInterval: this.props.showInterval, interval: this.props.interval, onIntervalChange: this.props.onIntervalChange });
+	    }
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      this.props.translations.RulePicker.RecurrenceRule,
+	      ':',
+	      React.createElement(
+	        'select',
+	        { onChange: this.props.onRuleChange },
+	        this.props.visibleOptions.daily ? React.createElement(
+	          'option',
+	          { value: 'daily' },
+	          this.props.translations.RulePicker.OptionDaily
+	        ) : null,
+	        this.props.visibleOptions.weekly ? React.createElement(
+	          'option',
+	          { value: 'weekly' },
+	          this.props.translations.RulePicker.OptionWeekly
+	        ) : null,
+	        this.props.visibleOptions.monthly_day_of_week ? React.createElement(
+	          'option',
+	          { value: 'monthly_day_of_week' },
+	          this.props.translations.RulePicker.OptionMonthlyByDayOfWeek
+	        ) : null,
+	        this.props.visibleOptions.monthly_day_of_month ? React.createElement(
+	          'option',
+	          { value: 'monthly_day_of_month' },
+	          this.props.translations.RulePicker.OptionMonthlyByDayOfMonth
+	        ) : null,
+	        this.props.visibleOptions.yearly ? React.createElement(
+	          'option',
+	          { value: 'yearly' },
+	          this.props.translations.RulePicker.OptionYearly
+	        ) : null
+	      ),
+	      this.getRule()
+	    );
+	  }
+	});
+
+	RulePicker.propTypes = {
+	  translations: React.PropTypes.object.isRequired
+	};
 
 module.exports = RulePicker;

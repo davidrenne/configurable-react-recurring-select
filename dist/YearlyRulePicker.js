@@ -1,11 +1,23 @@
 var React = require('react');
 
-var YearlyRulePicker = React.createClass({displayName: "YearlyRulePicker",
-  render: function() {
-    return (
-      React.createElement("div", {className: "rule"}, "Every ", React.createElement("input", {className: "interval", type: "text", value: this.props.interval, onChange: this.props.onIntervalChange}), " year(s)")
-    );
-  }
-});
+var YearlyRulePicker = React.createClass({
+	  displayName: "YearlyRulePicker",
+
+	  render: function render() {
+	    if (this.props.showInterval) {
+	      return React.createElement(
+	        "div",
+	        { className: "rule" },
+	        this.props.translations.Every,
+	        " ",
+	        React.createElement("input", { className: "interval", type: "text", value: this.props.interval, onChange: this.props.onIntervalChange }),
+	        " ",
+	        this.props.translations.Years
+	      );
+	    } else {
+	      return null;
+	    }
+	  }
+	});
 
 module.exports = YearlyRulePicker;
