@@ -1,6 +1,6 @@
 {
   "name": "configurable-react-recurring-select",
-  "version": "1.0.23",
+  "version": "1.0.31",
   "main": "./dist/RecurringSelect.js",
   "description": "React component which makes creating ice_cube recurrence schedules easy.  This fork of the original allows more control over every element and every i18n translation",
   "scripts": {
@@ -41,19 +41,18 @@
   "dependencies": {
     "classnames": "^2.2.1",
     "core-js": "^2.0.0",
+    "create-react-class": "^15.6.0",
     "css-loader": "^0.18.0",
     "e": "0.0.4",
-    "input-moment": "0.0.6",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
-    "node-sass": "^3.4.2",
+    "node-sass": "^4.5.3",
     "promise": "^7.1.1",
-    "react": "^0.14.0",
-    "react-date-picker": "^4.0.5",
-    "react-dom": "^0.14.0",
-    "react-simpletabs": "^0.7.0",
-    "react-time-picker": "^1.1.0",
-    "sass-loader": "^3.1.2",
-    "style-loader": "^0.13.0"
+    "react": "15.4.2",
+    "react-date-picker": "4.0.5",
+    "react-dom": "15.4.2",
+    "react-simpletabs-react15": "^0.7.1",
+    "react-time-picker-react15": "1.1.2",
+    "sass-loader": "^4.1.1"
   }
 }

@@ -1,7 +1,8 @@
-var React = require('react');
 var cn = require('classnames');
+var createReactClass = require('create-react-class');
+var React = require('react');
 
-var DayOfWeekPicker = React.createClass({
+var DayOfWeekPicker = createReactClass({
 	  displayName: 'DayOfWeekPicker',
 
 	  label: function label() {

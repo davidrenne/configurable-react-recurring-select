@@ -1,6 +1,7 @@
+var createReactClass = require('create-react-class');
 var React = require('react');
 
-var RuleSummary = React.createClass({
+var RuleSummary = createReactClass({
   toSentence: function(array) {
     if (array.length == 0) {
       return "";
@@ -68,83 +69,83 @@ var RuleSummary = React.createClass({
     }
     switch (fields.rule) {
       case "daily":
-              if (this.props.showInterval) {
-                sentence.push("day(s)");
-              } else {
-                sentence.push("Everyday");
-              }
+        if (this.props.showInterval) {
+          sentence.push("day(s)");
+        } else {
+          sentence.push("Everyday");
+        }
       case "weekly":
-              if (this.props.showInterval) {
-                sentence.push("week(s)");
-              }
-              var days = [];
-              if (fields.validations.length > 0) {
-                if (this.props.showInterval) {
-                  sentence.push("on");
-                } else {
-                  sentence.push("On");
-                }
-                for (var i = 0; i < fields.validations.length; i++) {
-                  days.push(weekDays[fields.validations[i]]);
-                }
-                sentence.push(this.toSentence(days));
-              }
-              break;
+        if (this.props.showInterval) {
+          sentence.push("week(s)");
+        }
+        var days = [];
+        if (fields.validations.length > 0) {
+          if (this.props.showInterval) {
+            sentence.push("on");
+          } else {
+            sentence.push("On");
+          }
+          for (var i = 0; i < fields.validations.length; i++) {
+            days.push(weekDays[fields.validations[i]]);
+          }
+          sentence.push(this.toSentence(days));
+        }
+        break;
       case "monthly":
-              if (this.props.showInterval) {
-                sentence.push("month(s)");
-              }
-              if (fields.validations.constructor == Array) {
-                var days = [];
-                for (var i = 0; i < fields.validations.length; i++) {
-                  days.push(englishDay[fields.validations[i]]);
-                }
-                if (days.length > 0) {
-                  if (this.props.showInterval) {
-                    sentence.push("on");
-                  } else {
-                    sentence.push("On");
-                  }
-                  sentence.push(this.toSentence(days));
-                  sentence.push("day");
-                  sentence.push("of the month");
-                }
-              } else {
-                var days = [];
-                if (fields.validations["1"].length > 0) {
-                  for (var i = 0; i < fields.validations["1"].length; i++) {
-                    days.push("1st " + weekDays[fields.validations["1"][i]]);
-                  }
-                }
-                if (fields.validations["2"].length > 0) {
-                  for (var i = 0; i < fields.validations["2"].length; i++) {
-                    days.push("2nd " + weekDays[fields.validations["2"][i]]);
-                  }
-                }
-                if (fields.validations["3"].length > 0) {
-                  for (var i = 0; i < fields.validations["3"].length; i++) {
-                    days.push("3rd " + weekDays[fields.validations["3"][i]]);
-                  }
-                }
-                if (fields.validations["4"].length > 0) {
-                  for (var i = 0; i < fields.validations["4"].length; i++) {
-                    days.push("4th " + weekDays[fields.validations["4"][i]]);
-                  }
-                }
-                if (days.length > 0) {
-                  sentence.push("on the");
-                  sentence.push(this.toSentence(days));
-                  sentence.push("of the month");
-                }
-              }
-              break;
+        if (this.props.showInterval) {
+          sentence.push("month(s)");
+        }
+        if (fields.validations.constructor == Array) {
+          var days = [];
+          for (var i = 0; i < fields.validations.length; i++) {
+            days.push(englishDay[fields.validations[i]]);
+          }
+          if (days.length > 0) {
+            if (this.props.showInterval) {
+              sentence.push("on");
+            } else {
+              sentence.push("On");
+            }
+            sentence.push(this.toSentence(days));
+            sentence.push("day");
+            sentence.push("of the month");
+          }
+        } else {
+          var days = [];
+          if (fields.validations["1"].length > 0) {
+            for (var i = 0; i < fields.validations["1"].length; i++) {
+              days.push("1st " + weekDays[fields.validations["1"][i]]);
+            }
+          }
+          if (fields.validations["2"].length > 0) {
+            for (var i = 0; i < fields.validations["2"].length; i++) {
+              days.push("2nd " + weekDays[fields.validations["2"][i]]);
+            }
+          }
+          if (fields.validations["3"].length > 0) {
+            for (var i = 0; i < fields.validations["3"].length; i++) {
+              days.push("3rd " + weekDays[fields.validations["3"][i]]);
+            }
+          }
+          if (fields.validations["4"].length > 0) {
+            for (var i = 0; i < fields.validations["4"].length; i++) {
+              days.push("4th " + weekDays[fields.validations["4"][i]]);
+            }
+          }
+          if (days.length > 0) {
+            sentence.push("on the");
+            sentence.push(this.toSentence(days));
+            sentence.push("of the month");
+          }
+        }
+        break;
       case "yearly":
-              if (this.props.showInterval) {
-                sentence.push("year(s)");
-              } else {
-                sentence.push("Every year");
-              }
-              break;
+        if (this.props.showInterval) {
+          sentence.push("year(s)");
+        } else {
+          sentence.push("Every year");
+        }
+        break;
     }
     sentence.push("at");
     sentence.push(fields.startTime);

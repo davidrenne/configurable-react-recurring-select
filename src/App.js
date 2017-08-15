@@ -1,6 +1,5 @@
-var React = require('react');
 var RecurringSelect = require('./components/RecurringSelect.js');
-
+var createReactClass = require('create-react-class');
 
 var translations = {};
 translations["RulePicker"] = {};
@@ -8,6 +7,7 @@ translations["TimePicker"] = {};
 translations["DatePicker"] = {};
 translations["RuleSummary"] = {};
 translations["Buttons"] = {};
+translations["Errors"] = {};
 translations["Intervals"] = {};
 translations["RulePicker"]["RecurrenceRule"] = "Recurrence Rule";
 translations["RulePicker"]["OptionDaily"] = "Daily";
@@ -72,9 +72,10 @@ translations["Intervals"]["Wed"] = "Wed";
 translations["Intervals"]["Thu"] = "Thu";
 translations["Intervals"]["Fri"] = "Fri";
 translations["Intervals"]["Sat"] = "Sat";
+translations["Errors"]["SelectOneDate"] = "Please select at least one date";
 
 
-var App = React.createClass({
+var App = createReactClass({
   render: function() {
 
       // <RecurringSelect

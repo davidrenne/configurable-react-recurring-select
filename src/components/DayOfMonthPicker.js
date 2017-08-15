@@ -1,7 +1,8 @@
-var React = require('react');
 var cn = require('classnames');
+var createReactClass = require('create-react-class');
+var React = require('react');
 
-var DayOfMonthPicker = React.createClass({
+var DayOfMonthPicker = createReactClass({
   handleDayChange: function (e) {
     var days = this.props.validations;
     var day = parseInt(e.target.id);

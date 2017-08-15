@@ -1,10 +1,11 @@
-var React = require('react');
 var RulePicker = require('./RulePicker.js');
-var TimePicker = require('react-time-picker');
+var TimePicker = require('react-time-picker-react15');
 var DatePicker = require('react-date-picker');
 var RuleSummary = require("./RuleSummary.js");
 var moment = require('moment');
-var Tabs = require('react-simpletabs');
+var Tabs = require('react-simpletabs-react15');
+var createReactClass = require('create-react-class');
+var React = require('react');
 
 
 
@@ -15,6 +16,7 @@ translations["DatePicker"] = {};
 translations["RuleSummary"] = {};
 translations["Buttons"] = {};
 translations["Intervals"] = {};
+translations["Errors"] = {};
 translations["RulePicker"]["RecurrenceRule"] = "Recurrence Rule";
 translations["RulePicker"]["OptionDaily"] = "Daily";
 translations["RulePicker"]["OptionWeekly"] = "Weekly";
@@ -78,9 +80,9 @@ translations["Intervals"]["Wed"] = "Wed";
 translations["Intervals"]["Thu"] = "Thu";
 translations["Intervals"]["Fri"] = "Fri";
 translations["Intervals"]["Sat"] = "Sat";
+translations["Errors"]["SelectOneDate"] = "Please select at least one date";
 
-
-var RecurringSelect = React.createClass({
+var RecurringSelect = createReactClass({
   getInitialState: function() {
     var until = "";
     if (this.props.allowForever) {
@@ -147,9 +149,25 @@ var RecurringSelect = React.createClass({
       startTime: time
     });
   },
+  anyRenderBottom: function() {
+    if (typeof(this.props.anyRenderBottom) == "function") {
+      return this.props.anyRenderBottom();
+    }
+    return null;
+  },
   handleSave: function(e) {
     var hash = this.state;
-    var data = {};
+    var data = {
+      valid: true,
+      error_message: ""
+    };
+
+    var validations = hash.validations == null ? [] : hash.validations;
+
+    if ((hash.rule == "weekly" || hash.rule == "monthly") && validations.length == 0) {
+      data.valid = false;
+      data.error_message = this.props.translations.Errors.SelectOneDate;
+    }
 
     var start = null;
 
@@ -178,7 +196,6 @@ var RecurringSelect = React.createClass({
                   break;
       }
       var interval = hash.interval;
-      var validations = hash.validations == null ? [] : hash.validations;
       var newValidations = {};
       if (Array.isArray(validations) && rule_type == "IceCube::WeeklyRule") {
         newValidations["day"] = validations
@@ -200,7 +217,7 @@ var RecurringSelect = React.createClass({
       data["start_time"] = start;
       data["rule_type"] = hash.rule;
       data["interval"] = hash.interval;
-      data["validations"] = hash.validations;
+      data["validations"] = validations;
       data["until"] =  hash.until;
       this.props.onSave(data);
     }
@@ -238,47 +255,9 @@ var RecurringSelect = React.createClass({
         <hr/>
         {this.props.showSummary ? <RuleSummary showLanguageNotSupportedMessage={this.props.showLanguageNotSupportedMessage} fields={this.state} showInterval={this.props.showInterval} translations={this.props.translations.RuleSummary} language={this.props.language} /> : null}
         <span onClick={this.handleSave}>{this.props.button}</span>
+        {this.anyRenderBottom()}
       </div>
     );
   }
 });
-
-RecurringSelect.propTypes = {
-  visibleOptions: React.PropTypes.object,
-  translations: React.PropTypes.object,
-  handleSave: React.PropTypes.func,
-  useSeconds: React.PropTypes.bool,
-  showSummary: React.PropTypes.bool,
-  button: React.PropTypes.node.isRequired,
-  showInterval: React.PropTypes.bool,
-  showLanguageNotSupportedMessage: React.PropTypes.bool,
-  convertToIceCube: React.PropTypes.bool,
-  language: React.PropTypes.string,
-  //Initial state
-  rule: React.PropTypes.string,
-  interval: React.PropTypes.number,
-  validations: React.PropTypes.array,
-  until: React.PropTypes.any,
-  startTime: React.PropTypes.string
-};
-
-RecurringSelect.defaultProps = {
-  visibleOptions: {
-    daily: true,
-    weekly: true,
-    monthly_day_of_week: true,
-    monthly_day_of_month: true,
-    yearly: true
-  },
-  translations: translations,
-  language: "en",
-  showSummary: true,
-  showLanguageNotSupportedMessage: false,
-  useSeconds: true,
-  allowForever: true,
-  showInterval: true,
-  showTimeOnSameTab: true,
-  convertToIceCube: false,
-};
-
 module.exports = RecurringSelect;

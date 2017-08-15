@@ -1,10 +1,11 @@
-var React = require('react');
 var DailyRulePicker = require('./DailyRulePicker.js');
 var WeeklyRulePicker = require('./WeeklyRulePicker.js');
 var MonthlyRulePicker = require('./MonthlyRulePicker.js');
 var YearlyRulePicker = require('./YearlyRulePicker.js');
+var createReactClass = require('create-react-class');
+var React = require('react');
 
-var RulePicker = React.createClass({
+var RulePicker = createReactClass({
   getRule: function() {
     switch (this.props.rule) {
       case "daily":   return <DailyRulePicker translations={this.props.translations.Intervals} showInterval={this.props.showInterval} interval={this.props.interval} onIntervalChange={this.props.onIntervalChange} />;
@@ -29,10 +30,6 @@ var RulePicker = React.createClass({
     );
   }
 });
-
-RulePicker.propTypes = {
-  translations: React.PropTypes.object.isRequired
-};
 
 
 module.exports = RulePicker;

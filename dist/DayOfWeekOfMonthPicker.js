@@ -1,7 +1,8 @@
-var React = require('react');
 var DayOfWeekPicker = require('./DayOfWeekPicker.js');
+var createReactClass = require('create-react-class');
+var React = require('react');
 
-var DayOfWeekOfMonthPicker = React.createClass({
+var DayOfWeekOfMonthPicker = createReactClass({
 	  displayName: 'DayOfWeekOfMonthPicker',
 
 	  handleDayOfWeekChange: function handleDayOfWeekChange(week, e) {

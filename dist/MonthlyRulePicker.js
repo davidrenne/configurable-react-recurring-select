@@ -1,8 +1,9 @@
-var React = require('react');
 var DayOfWeekOfMonthPicker = require('./DayOfWeekOfMonthPicker.js');
 var DayOfMonthPicker = require('./DayOfMonthPicker.js');
+var createReactClass = require('create-react-class');
+var React = require('react');
 
-var MonthlyRulePicker = React.createClass({
+var MonthlyRulePicker = createReactClass({
 	  displayName: 'MonthlyRulePicker',
 
 	  render: function render() {

@@ -1,6 +1,7 @@
+var createReactClass = require('create-react-class');
 var React = require('react');
 
-var RuleSummary = React.createClass({
+var RuleSummary = createReactClass({
 	  displayName: "RuleSummary",
 
 	  toSentence: function toSentence(array) {

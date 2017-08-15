@@ -1,6 +1,7 @@
+var createReactClass = require('create-react-class');
 var React = require('react');
 
-var DailyRulePicker = React.createClass({
+var DailyRulePicker = createReactClass({
 	  displayName: "DailyRulePicker",
 
 	  render: function render() {

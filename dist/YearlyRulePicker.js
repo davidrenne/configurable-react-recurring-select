@@ -1,6 +1,7 @@
+var createReactClass = require('create-react-class');
 var React = require('react');
 
-var YearlyRulePicker = React.createClass({
+var YearlyRulePicker = createReactClass({
 	  displayName: "YearlyRulePicker",
 
 	  render: function render() {
