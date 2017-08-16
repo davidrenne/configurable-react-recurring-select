@@ -85,20 +85,20 @@ translations["Errors"]["SelectOneDate"] = "Please select at least one date";
 var RecurringSelect = createReactClass({
   getInitialState: function() {
     var until = "";
-    if (this.props.allowForever) {
+    if (this.props.allowForever || this.props.until == undefined) {
       until = "0000-00-00";
     } else {
       until = moment().format('YYYY-MM-DD');
     }
 
-    return ({
-      showCalendar: false,
-      rule: this.props.rule == undefined ? "daily": this.props.rule,
-      interval: this.props.interval == undefined ? 1: this.props.interval,
-      validations: this.props.validations == undefined ? null: this.props.validations,
-      until: this.props.until == undefined ? until: this.props.until,
-      startTime: this.props.startTime == undefined ? "10:00 AM": this.props.startTime
-    });
+    return {
+      showCalendar: this.props.until == undefined || until == "0000-00-00" ? false: true,
+      rule: this.props.rule == undefined ? "daily" : this.props.rule,
+      interval: this.props.interval == undefined ? 1 : this.props.interval,
+      validations: this.props.validations == undefined ? null : this.props.validations,
+      until: this.props.until == undefined ? until : this.props.until,
+      startTime: this.props.startTime == undefined || this.props.startTime == "" ? "10:00 AM" : this.props.startTime
+    };
   },
   handleToggleForeverChange: function(e) {
     this.setState({
@@ -213,7 +213,6 @@ var RecurringSelect = createReactClass({
       data["until"] = until;
       this.props.onSave(JSON.stringify(data));
     } else {
-      var data = {};
       data["start_time"] = start;
       data["rule_type"] = hash.rule;
       data["interval"] = hash.interval;
