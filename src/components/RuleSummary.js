@@ -148,7 +148,7 @@ var RuleSummary = createReactClass({
         break;
     }
     sentence.push("at");
-    sentence.push(fields.startTime);
+    sentence.push(moment(fields.startTime, "hh:mm:ss A").format("hh:mm:ss A"));
     if (fields.until != "0000-00-00") {
       sentence.push("until");
       sentence.push(fields.until);
