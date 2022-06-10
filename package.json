@@ -51,7 +51,7 @@
     "react": "15.4.2",
     "react-date-picker": "4.0.5",
     "react-dom": "15.4.2",
-    "react-simpletabs-react15": "^0.7.1",
+    "react-simpletabs-react15": "^0.7.2",
     "react-time-picker-react15": "1.1.2",
     "sass-loader": "^4.1.1"
   }
