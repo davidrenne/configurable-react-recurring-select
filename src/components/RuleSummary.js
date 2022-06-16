@@ -1,6 +1,5 @@
 var createReactClass = require('create-react-class');
 var React = require('react');
-var moment = require('moment');
 
 var RuleSummary = createReactClass({
   toSentence: function(array) {

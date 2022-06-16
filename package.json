@@ -1,8 +1,8 @@
 {
   "name": "configurable-react-recurring-select",
-  "version": "1.0.51",
+  "version": "1.0.53",
   "main": "./dist/RecurringSelect.js",
-  "description": "React component which makes creating ice_cube recurrence schedules easy.  This fork of the original allows more control over every element and every i18n translation.  It supports react 16.14",
+  "description": "React component which makes creating ice_cube recurrence schedules easy.  This fork of the original allows more control over every element and every i18n translation.  It supports react 16.14 but moment must be a global variable in your project.",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src",
@@ -44,7 +44,6 @@
     "css-loader": "^6.7.1",
     "e": "0.2.1",
     "lodash": "^4.17.21",
-    "moment": "^2.29.3",
     "node-sass": "^7.0.1",
     "promise": "^8.1.0",
     "react": "16.14.0",

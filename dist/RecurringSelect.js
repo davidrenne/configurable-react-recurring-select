@@ -1,7 +1,6 @@
 var RulePicker = require('./RulePicker.js');
 var TimePicker = require('dave-rennes-react-time-picker');
 var RuleSummary = require("./RuleSummary.js");
-var moment = require('moment');
 var Tabs = require('react-simpletabs-react15');
 var createReactClass = require('create-react-class');
 var React = require('react');
