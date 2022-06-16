@@ -295,4 +295,6 @@ var RecurringSelect = createReactClass({
     );
   }
 });
-module.exports = RecurringSelect;
+
+export default RecurringSelect;
+// module.exports = RecurringSelect;
