@@ -1,12 +1,11 @@
 var RulePicker = require('./RulePicker.js');
-var TimePicker = require('react-time-picker-react15');
-var DatePicker = require('react-date-picker');
+import TimePicker from 'react-time-picker';
+import DatePicker from 'react-date-picker';
 var RuleSummary = require("./RuleSummary.js");
 var moment = require('moment');
 var Tabs = require('react-simpletabs-react15');
 var createReactClass = require('create-react-class');
 var React = require('react');
-
 
 
 var translations = {};
