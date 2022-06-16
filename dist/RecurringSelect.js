@@ -1,11 +1,12 @@
 var RulePicker = require('./RulePicker.js');
-import TimePicker from 'react-time-picker';
-import DatePicker from 'react-date-picker';
+var TimePicker = require('react-time-picker');
+var DatePicker = require('react-date-picker');
 var RuleSummary = require("./RuleSummary.js");
 var moment = require('moment');
 var Tabs = require('react-simpletabs-react15');
 var createReactClass = require('create-react-class');
 var React = require('react');
+
 
 
 var translations = {};
@@ -223,7 +224,7 @@ var RecurringSelect = createReactClass({
     }
   },
   render: function render() {
-    var timeWidget = React.createElement(TimePicker, { format: this.props.useSeconds ? 'H:mm:ss a' : null, value: this.state.startTime, onChange: this.handleTimeChange });
+    var timeWidget = React.createElement(TimePicker.default, { format: this.props.useSeconds ? 'H:mm:ss a' : null, value: this.state.startTime, onChange: this.handleTimeChange });
 
     return React.createElement(
       'div',
@@ -280,7 +281,7 @@ var RecurringSelect = createReactClass({
             ),
             ')'
           ),
-          this.state.showCalendar ? React.createElement(DatePicker, { locale: this.props.language, minDate: moment().format("YYYY-MM-DD"), date: this.state.until == "0000-00-00" ? "" : this.state.until, onChange: this.handleEndDateChange }) : null
+          this.state.showCalendar ? React.createElement(DatePicker.default, { locale: this.props.language, minDate: moment().format("YYYY-MM-DD"), date: this.state.until == "0000-00-00" ? "" : this.state.until, onChange: this.handleEndDateChange }) : null
         )
       ),
       React.createElement('hr', null),
