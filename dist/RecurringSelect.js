@@ -1,5 +1,5 @@
 var RulePicker = require('./RulePicker.js');
-var TimePicker = require('react-time-picker-react15');
+var TimePicker = require('react-time-picker');
 var DatePicker = require('react-date-picker');
 var RuleSummary = require("./RuleSummary.js");
 var moment = require('moment');
