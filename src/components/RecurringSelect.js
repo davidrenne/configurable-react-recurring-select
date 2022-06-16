@@ -1,6 +1,5 @@
 var RulePicker = require('./RulePicker.js');
 var TimePicker = require('dave-rennes-react-time-picker');
-var DatePicker = require('react-date-picker');
 var RuleSummary = require("./RuleSummary.js");
 var moment = require('moment');
 var Tabs = require('react-simpletabs-react15');
@@ -222,7 +221,7 @@ var RecurringSelect = createReactClass({
     }
   },
   render: function() {
-    var timeWidget = <TimePicker format={this.props.useSeconds ? 'H:mm:ss a': null} value={this.state.startTime} onChange={this.handleTimeChange} disableClock={true}/>;
+    var timeWidget = <TimePicker clearIcon={null} format={this.props.useSeconds ? 'H:mm:ss a': null} value={this.state.startTime} onChange={this.handleTimeChange} disableClock={true}/>;
 
     return (
       <div className="recurring-select">
@@ -245,11 +244,6 @@ var RecurringSelect = createReactClass({
           {!this.props.showTimeOnSameTab ? <Tabs.Panel title={this.props.translations.TimePicker.OccurrenceTime}>
             {timeWidget}
           </Tabs.Panel>: <Tabs.Panel></Tabs.Panel>}
-
-          <Tabs.Panel title={this.props.translations.DatePicker.RecurringUntil}>
-            {this.state.until == "0000-00-00" ? <span>{this.props.translations.DatePicker.RecurringForever} (<a href="javascript:" onClick={this.handleToggleForeverChange}>{this.props.translations.DatePicker.ChangeToSpecificDate}</a>)</span> : <span>{this.props.translations.DatePicker.RecurringEndingOn} {this.state.until} (<a href="javascript:" onClick={this.handleToggleForeverChange}>{this.props.translations.DatePicker.ChangeToForever}</a>)</span>}
-            {this.state.showCalendar ? <DatePicker locale={this.props.language} minDate={moment().format("YYYY-MM-DD")} date={this.state.until == "0000-00-00" ? "": this.state.until} onChange={this.handleEndDateChange} />: null}
-          </Tabs.Panel>
         </Tabs>
         <hr/>
         {this.props.showSummary ? <RuleSummary showLanguageNotSupportedMessage={this.props.showLanguageNotSupportedMessage} fields={this.state} showInterval={this.props.showInterval} translations={this.props.translations.RuleSummary} language={this.props.language} /> : null}

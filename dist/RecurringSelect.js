@@ -1,6 +1,5 @@
 var RulePicker = require('./RulePicker.js');
 var TimePicker = require('dave-rennes-react-time-picker');
-var DatePicker = require('react-date-picker');
 var RuleSummary = require("./RuleSummary.js");
 var moment = require('moment');
 var Tabs = require('react-simpletabs-react15');
@@ -224,7 +223,7 @@ var RecurringSelect = createReactClass({
     }
   },
   render: function render() {
-    var timeWidget = React.createElement(TimePicker.default, { format: this.props.useSeconds ? 'H:mm:ss a' : null, value: this.state.startTime, onChange: this.handleTimeChange, disableClock: true });
+    var timeWidget = React.createElement(TimePicker.default, { clearIcon: null, format: this.props.useSeconds ? 'H:mm:ss a' : null, value: this.state.startTime, onChange: this.handleTimeChange, disableClock: true });
 
     return React.createElement(
       'div',
@@ -252,37 +251,7 @@ var RecurringSelect = createReactClass({
           Tabs.Panel,
           { title: this.props.translations.TimePicker.OccurrenceTime },
           timeWidget
-        ) : React.createElement(Tabs.Panel, null),
-        React.createElement(
-          Tabs.Panel,
-          { title: this.props.translations.DatePicker.RecurringUntil },
-          this.state.until == "0000-00-00" ? React.createElement(
-            'span',
-            null,
-            this.props.translations.DatePicker.RecurringForever,
-            ' (',
-            React.createElement(
-              'a',
-              { href: 'javascript:', onClick: this.handleToggleForeverChange },
-              this.props.translations.DatePicker.ChangeToSpecificDate
-            ),
-            ')'
-          ) : React.createElement(
-            'span',
-            null,
-            this.props.translations.DatePicker.RecurringEndingOn,
-            ' ',
-            this.state.until,
-            ' (',
-            React.createElement(
-              'a',
-              { href: 'javascript:', onClick: this.handleToggleForeverChange },
-              this.props.translations.DatePicker.ChangeToForever
-            ),
-            ')'
-          ),
-          this.state.showCalendar ? React.createElement(DatePicker.default, { locale: this.props.language, minDate: moment().format("YYYY-MM-DD"), date: this.state.until == "0000-00-00" ? "" : this.state.until, onChange: this.handleEndDateChange }) : null
-        )
+        ) : React.createElement(Tabs.Panel, null)
       ),
       React.createElement('hr', null),
       this.props.showSummary ? React.createElement(RuleSummary, { showLanguageNotSupportedMessage: this.props.showLanguageNotSupportedMessage, fields: this.state, showInterval: this.props.showInterval, translations: this.props.translations.RuleSummary, language: this.props.language }) : null,
