@@ -1,5 +1,5 @@
 var RulePicker = require('./RulePicker.js');
-var TimePicker = require('react-time-picker');
+var TimePicker = require('dave-rennes-react-time-picker');
 var DatePicker = require('react-date-picker');
 var RuleSummary = require("./RuleSummary.js");
 var moment = require('moment');
@@ -222,7 +222,7 @@ var RecurringSelect = createReactClass({
     }
   },
   render: function() {
-    var timeWidget = <TimePicker format={this.props.useSeconds ? 'H:mm:ss a': null} value={this.state.startTime} onChange={this.handleTimeChange} />;
+    var timeWidget = <TimePicker format={this.props.useSeconds ? 'H:mm:ss a': null} value={this.state.startTime} onChange={this.handleTimeChange} disableClock={true}/>;
 
     return (
       <div className="recurring-select">
